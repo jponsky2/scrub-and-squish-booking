@@ -965,7 +965,7 @@ function delPortfolio(id){ if(!confirm('Remove this photo?'))return; portfolio=p
 function editCaption(id){ const ph=portfolio.find(p=>p.id===id); if(!ph)return; const c=prompt('Caption:',ph.caption||''); if(c===null)return; ph.caption=c; persist(); renderSettings(); }
 
 // ================= Public booking link =================
-function bookingURL(){ return 'https://scrubandsquish.com'; }
+function bookingURL(){ return 'https://book.scrubandsquish.com'; }
 function bookingLinkSheet(){
   openSheet(`<h3>Your 24/7 booking link</h3><p class="muted" style="font-size:14px">Share this so customers can book themselves anytime. Bookings land on your Schedule.</p>
     <div style="background:var(--panel-2);border-radius:11px;padding:12px;margin:12px 0;font-size:13px;word-break:break-all">${bookingURL()}</div>
