@@ -365,7 +365,7 @@
     <div id="pubPortWrap" style="display:none"><div class="port-grid" id="pubPortfolio"></div></div>
     <div id="pubRevWrap" style="display:none"><div id="pubReviews"></div></div>
     <div id="pubAboutWrap" style="display:none"><div id="pubAbout"></div></div>
-    <div style="text-align:center;padding:26px 0 10px"><button class="link" onclick="exitPublic()">Staff login</button></div>
+    <div id="staffLoginRow" style="text-align:center;padding:26px 0 10px"><button class="link" onclick="exitPublic()">Staff login</button></div>
   </section>
 </main>
 
@@ -982,6 +982,9 @@ function renderPublic(){
   document.getElementById('pubName').textContent=biz.name;
   document.getElementById('pubTag').textContent=p.tagline||'';
   document.getElementById('pubMeta').innerHTML=[p.area,p.phone].filter(Boolean).join(' · ');
+  // Hide "Staff login" on the live customer booking site; keep it for the manager's preview.
+  const h=location.hostname, onBookingDomain=(h==='scrubandsquish.com'||h==='www.scrubandsquish.com'||h.indexOf('book.')===0);
+  const slr=document.getElementById('staffLoginRow'); if(slr) slr.style.display=onBookingDomain?'none':'block';
   pubTab('book');
 }
 function pubTab(t){
